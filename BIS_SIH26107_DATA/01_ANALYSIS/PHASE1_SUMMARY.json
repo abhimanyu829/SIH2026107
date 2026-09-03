@@ -1,0 +1,23 @@
+{
+  "phase": 1,
+  "generated_at_utc": "2026-09-01T14:15:38Z",
+  "total_files_enumerated": 49,
+  "files_analyzed": 48,
+  "files_repaired_in_memory": 3,
+  "files_non_tabular": 1,
+  "files_error": 0,
+  "total_worksheets": 48,
+  "total_columns_profiled": 685,
+  "total_data_rows": 57215,
+  "classification_rows": 48,
+  "unknown_domain_sheets": 0,
+  "distinct_sha256": 48,
+  "exact_byte_duplicate_files": 1,
+  "rows_written": {
+    "FILE_INVENTORY.csv": 49,
+    "WORKBOOK_SHEET_ANALYSIS.csv": 48,
+    "COLUMN_PROFILING.csv": 685,
+    "DATASET_CLASSIFICATION.csv": 48
+  },
+  "source_files_modified": 0
+}

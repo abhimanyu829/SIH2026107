@@ -1,0 +1,198 @@
+BIS_SIH26107_DATA/
+    00_MASTER/
+        DOCUMENT_MASTER.csv  (19,567 bytes)
+        ENTITY_ATTRIBUTES.csv  (13,908,557 bytes)
+        FAQ_MASTER.csv  (61,124 bytes)
+        FMCS_COUNTRY_COVERAGE.csv  (5,169 bytes)
+        FMCS_IS_COVERAGE.csv  (31,350 bytes)
+        FMCS_MASTER.csv  (20,145,546 bytes)
+        HALLMARKING_MASTER.csv  (1,001,643 bytes)
+        IS_COMPLETE_MASTER.xlsx  (522,459 bytes)
+        IS_MASTER.csv  (661,864 bytes)
+        LAB_MASTER.csv  (168,081 bytes)
+        LAB_SCOPE.csv  (19,053 bytes)
+        LEGAL_MASTER.csv  (248,944 bytes)
+        NOTIFICATION_MASTER.csv  (432,453 bytes)
+        PRODUCT_MANUAL_INFRASTRUCTURE.csv  (8,516 bytes)
+        PRODUCT_MANUAL_MARKING.csv  (9,114 bytes)
+        PRODUCT_MANUAL_MASTER.csv  (12,144 bytes)
+        PRODUCT_MANUAL_REQUIREMENTS.csv  (37,776 bytes)
+        PRODUCT_MANUAL_SAMPLING.csv  (17,057 bytes)
+        PRODUCT_MANUAL_TESTING.csv  (28,125 bytes)
+        PRODUCT_MASTER.csv  (110,106 bytes)
+        QCO_MASTER.csv  (44,640 bytes)
+        SCHEME_MASTER.csv  (58,023 bytes)
+        TEST_MASTER.csv  (106,549 bytes)
+    00_SCRIPTS/
+        p1_lib.py  (19,295 bytes)
+        p1_run.py  (19,740 bytes)
+        p2_decide.py  (44,663 bytes)
+        p2_lib.py  (7,802 bytes)
+        p2_run.py  (21,065 bytes)
+        p2_verify.py  (9,400 bytes)
+        p3_build.py  (96,184 bytes)
+        p3_cache.py  (1,685 bytes)
+        p3_design.py  (27,213 bytes)
+        p3_fk_fix.py  (9,562 bytes)
+        p3_fk_fix2.py  (5,854 bytes)
+        p3_lib.py  (29,124 bytes)
+        p3_model.py  (86,103 bytes)
+        p3_provfill.py  (7,363 bytes)
+        p3_verify.py  (34,371 bytes)
+        __pycache__/
+            p1_lib.cpython-310.pyc  (16,622 bytes)
+            p2_lib.cpython-310.pyc  (7,416 bytes)
+            p3_lib.cpython-310.pyc  (24,971 bytes)
+            p3_model.cpython-310.pyc  (49,300 bytes)
+    01_ANALYSIS/
+        CANONICAL_DECISIONS.csv  (32,088 bytes)
+        COLUMN_PROFILING.csv  (162,050 bytes)
+        CONFLICTS.csv  (1,700,707 bytes)
+        DATASET_CLASSIFICATION.csv  (11,661 bytes)
+        DATASET_COMPARISON.csv  (319,132 bytes)
+        DUPLICATE_GROUPS.csv  (185,922 bytes)
+        FILE_INVENTORY.csv  (23,681 bytes)
+        PHASE1_COVERAGE_VERIFICATION.csv  (2,376 bytes)
+        PHASE1_DATA_QUALITY_FLAGS.csv  (44,342 bytes)
+        PHASE1_NULL_SEMANTICS.csv  (18,611 bytes)
+        PHASE1_SUMMARY.json  (597 bytes)
+        PHASE2_MERGE_PLAN.csv  (20,992 bytes)
+        PHASE2_REPORT.txt  (4,477 bytes)
+        ROW_LEVEL_DUPLICATES.csv  (520,367 bytes)
+        SCHEMA_COMPARISON.csv  (566,065 bytes)
+        VERSION_ANALYSIS.csv  (8,594 bytes)
+        WORKBOOK_SHEET_ANALYSIS.csv  (42,372 bytes)
+    01_SOURCE_DATA/
+        01_KNOW_YOUR_STANDARD/
+            BIS_Standards_Amendments__BIS_Standards_Amendments.csv  (9,540 bytes)
+            BIS_Standards_Details_v2__1___BIS_Standards.csv  (15,188 bytes)
+            BIS_Standards_Details_v2__BIS_Standards.csv  (15,188 bytes)
+            BIS_Standards_Details_v3__BIS_Standards.csv  (17,082 bytes)
+        02_PRODUCTS/
+            BIS_Products_Details__Products_Details.csv  (17,682 bytes)
+            BIS_Products_Full_Information__Products_Details.csv  (24,247 bytes)
+            BIS_Products_Full_Information_v2__Products_Details.csv  (24,246 bytes)
+        03_QCO/
+            BIS_QCO-schema_2__BIS_QCO-schema_2.csv  (21,898 bytes)
+            BIS_QCO_Master_Records__1___QCO_Master_Records.csv  (6,682 bytes)
+            BIS_QCO_Master_Records__QCO_Master_Details.csv  (2,026 bytes)
+            BIS_QCO_Master_Records_v3__QCO_Master_Records.csv  (6,281 bytes)
+            BIS_QCO_Master_Scheme_1__BIS_QCO_Master_Scheme_1.csv  (18,467 bytes)
+            BIS_QCO_Summary__QCO_Summary.csv  (9,731 bytes)
+        04_SCHEME_I/
+            BIS_Schemes_Master__BIS_Schemes_Master.csv  (16,458 bytes)
+        05_SCHEME_II_CRS/
+            05_scheme_ii.csv  (61,928 bytes)
+            BIS_Schemes_Master_Scheme_2__BIS_Schemes_Master_Scheme_2.csv  (17,938 bytes)
+        06_SCHEME_IV_COC/
+            06_scheme_iv.csv  (5,774 bytes)
+        07_SCHEME_X/
+            07_scheme_x.csv  (43,500 bytes)
+            BIS_Scheme_X_Industrial__BIS_Scheme_X.csv  (5,096 bytes)
+            BIS_Scheme_X_Industrial_v2__BIS_Scheme_X.csv  (5,096 bytes)
+        08_PRODUCT_SPECIFIC/
+            BIS_Standards_Intelligence_Master__BIS_Standards_Intelligence.csv  (51,459 bytes)
+            BIS_Standards_Scheme_Mapping__BIS_Standards_Scheme_Mapping.csv  (166,318 bytes)
+        09_PRODUCT_MANUALS/
+            BIS_Product_Manuals_Master__BIS_Product_Manuals.csv  (23,855 bytes)
+        10_TESTING/
+            BIS_Combined_Testing_Master__Combined_Testing_Master.csv  (58,361 bytes)
+            BIS_Testing_Parameters_Master__BIS_Testing_Parameters.csv  (25,968 bytes)
+        11_CERTIFICATION_PROCESS/
+            bis_product_certifications.csv  (555,348 bytes)
+        12_CERTIFICATION_FAQ/
+            BIS_FAQs_Master__BIS_FAQs_Master.csv  (42,897 bytes)
+            bis_product_certification_faq__1_.csv  (18,678 bytes)
+        13_LAB_SERVICES/
+            BIS_Laboratory_Scopes__BIS_Laboratory_Scopes.csv  (17,088 bytes)
+        14_LIMS_LABS/
+            BIS_Recognized_Laboratories__BIS_Recognized_Labs.csv  (4,870 bytes)
+            bis_laboratories.csv  (212,866 bytes)
+        15_LIMS_IS_TEST/
+        16_ACT_RULES_REGULATIONS/
+            BIS_Notifications_Master__BIS_Notifications_Master.csv  (10,791 bytes)
+            bis_circulars__1_.csv  (246,319 bytes)
+            bis_gazette_notification.csv  (615,128 bytes)
+        17_HALLMARKING_OVERVIEW/
+        18_HALLMARKING_FAQ/
+        19_HALLMARKING_ORDERS/
+            BIS_Mandatory_Hallmarking_Orders__Mandatory_Hallmarking_Orders.csv  (8,680 bytes)
+        20_HALLMARKING_CENTRES/
+            bis_topic17_hallmarking_centres.csv  (619,900 bytes)
+            bis_topic17_hallmarking_centres_cancelled_suspended.csv  (300,699 bytes)
+        21_JEWELLER_REGISTRATION/
+        22_FMCS/
+            BIS_Scheme_IV_FMCS__BIS_FMCS_Scheme_IV.csv  (41,627 bytes)
+            data__raw__fmcs_all_fmcs_list_raw.csv  (867,356 bytes)
+            output__fmcs_country_coverage.csv  (3,236 bytes)
+            output__fmcs_is_coverage.csv  (16,107 bytes)
+            output__topic18_fmcs_manufacturers.csv  (19,619,156 bytes)
+            output__topic19_official_documents.csv  (12,457 bytes)
+        OTHER_RELEVANT/
+            17_source_conflicts.csv  (1,647 bytes)
+            output__extraction_log.csv  (3,701 bytes)
+            output__source_inventory.csv  (14,772 bytes)
+            output__topic20_provenance.csv  (36,000,846 bytes)
+            output__unresolved_records.csv  (10,509 bytes)
+        UNKNOWN/
+    03_CANONICAL_DESIGN/
+        CANONICAL_DATA_MODEL.xlsx  (97,119 bytes)
+    03_STATE/
+        phase3_state.json  (13,986 bytes)
+    90_RELATIONSHIPS/
+        ENTITY_DOCUMENT_MAPPING.csv  (8,019 bytes)
+        HALLMARKING_CENTRE_SCOPE.csv  (465,118 bytes)
+        IS_AMENDMENTS.csv  (355 bytes)
+        IS_DOCUMENT_MAPPING.csv  (242 bytes)
+        IS_ENTITY_MAPPING.csv  (219,822 bytes)
+        IS_FMCS_MAPPING.csv  (1,270,840 bytes)
+        IS_LAB_TEST_MAPPING.csv  (1,440,091 bytes)
+        IS_PRODUCT_MANUAL_MAPPING.csv  (7,247 bytes)
+        IS_PRODUCT_MAPPING.csv  (90,002 bytes)
+        IS_QCO_MAPPING.csv  (31,070 bytes)
+        IS_RELATED_IS.csv  (16,357 bytes)
+        IS_SCHEME_MAPPING.csv  (76,130 bytes)
+        IS_TEST_MAPPING.csv  (73,145 bytes)
+        NOTIFICATION_ENTITY_MAPPING.csv  (269,682 bytes)
+        PRODUCT_DOCUMENT_MAPPING.csv  (240 bytes)
+        QCO_PRODUCT_MAPPING.csv  (71,571 bytes)
+        QCO_SCHEME_MAPPING.csv  (54,948 bytes)
+        SCHEME_PRODUCT_MAPPING.csv  (71,365 bytes)
+        TEST_LAB_MAPPING.csv  (244 bytes)
+    91_PROVENANCE/
+        DOCUMENT_PROVENANCE.csv  (15,732 bytes)
+        RECORD_PROVENANCE.csv  (143,367,807 bytes)
+        SOURCE_FILE_PROVENANCE.csv  (31,003 bytes)
+    92_VALIDATION/
+        ARCHIVE_VALIDATION.csv  (4,058 bytes)
+        CONFLICT_STATUS.csv  (2,987,758 bytes)
+        DATA_LOSS_AUDIT.csv  (8,651,417 bytes)
+        FIELD_COMPLETENESS.csv  (66,369 bytes)
+        FINAL_DATA_VALIDATION_REPORT.xlsx  (18,991 bytes)
+        FINAL_DIRECTORY_TREE.txt  (9,183 bytes)
+        IS_COVERAGE.csv  (150,771 bytes)
+        ORPHAN_RECORDS.csv  (56,202 bytes)
+        PROVENANCE_VALIDATION.csv  (2,098 bytes)
+        RELATIONSHIP_VALIDATION.csv  (1,423 bytes)
+        REQUIRES_REVIEW.csv  (1,888,366 bytes)
+    93_OPERATIONAL/
+        EXTRACTION_LOG.csv  (4,022 bytes)
+        PHASE3_BUILD_STATS.json  (13,461 bytes)
+        UNRESOLVED_RELATIONSHIP_REFERENCES.csv  (52,997 bytes)
+    99_RAW/
+        ARCHIVE_DUPLICATES/
+            BIS_Products_Full_Information.xlsx  (13,534 bytes)
+            BIS_Scheme_X_Industrial_v2.xlsx  (7,145 bytes)
+            BIS_Standards_Details_v2 (1).xlsx  (12,010 bytes)
+            BIS_Standards_Details_v2.xlsx  (12,010 bytes)
+            README.md  (455 bytes)
+    POSTGRES_READY/
+        DDL.sql  (55,386 bytes)
+        LOAD.sql  (29,613 bytes)
+        TABLE_MANIFEST.csv  (6,433 bytes)
+    QDRANT_READY/
+        PAYLOAD_SCHEMA.csv  (1,395 bytes)
+        README.md  (561 bytes)
+        qdrant_chunks.jsonl  (49,803,287 bytes)
+
+Files: 156   Checks: 39   Failures: 0

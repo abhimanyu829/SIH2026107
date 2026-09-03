@@ -1,0 +1,17 @@
+﻿field,type,required,meaning
+chunk_id,string,YES,Stable chunk identifier (CHK-nnnnnnn).
+document_id,string,NO,FK to document_master.document_id when the chunk came from a registered document.
+is_id,string,NO,FK to is_master.is_id - the standard the chunk is about.
+canonical_is_number,string,NO,"Normalized IS number, for filtered retrieval."
+document_type,string,NO,IS_STANDARD / QCO / SCHEME / PRODUCT_MANUAL / FAQ / LEGAL / NOTIFICATION / TEST_METHOD / LABORATORY / HALLMARKING_CENTRE / FMCS_LICENCE / PRODUCT / DOCUMENT or the source-declared type for evidence chunks.
+title,string,NO,Human title of the parent record.
+section,string,NO,"Section or category label (PM section category, FAQ category, product category, or the source-declared section)."
+clause,string,NO,Clause reference when the source stated one.
+page_start,integer,NO,"First page, when the source stated one."
+page_end,integer,NO,"Last page, when the source stated one."
+breadcrumb,string,NO,Hierarchical path for display and re-ranking.
+content,string,YES,The retrievable text. Minimum 40 characters; assembled only from populated source fields - no text was invented.
+source_url,string,NO,Citable URL as recorded in the sources.
+version,string,NO,Version/revision as recorded.
+effective_date,string,NO,Effective or publication date as recorded.
+sha256,string,NO,Hash of the parent document when known.

@@ -1,0 +1,14 @@
+[
+  {"id": 1,  "name": "simple_chat",            "query": "What is IS 17631:2022?",                        "expect_mode": "SIMPLE", "expect_tools_includes": ["hybrid_retrieve"], "expect_not_tools": ["find_labs", "get_tests", "get_qco"]},
+  {"id": 2,  "name": "standard_discovery",     "query": "I manufacture adjustable office work chairs. Which Indian Standard applies?", "expect_mode": "AGENT", "expect_tools_includes": ["find_product"], "expect_answer_contains": ["17631"]},
+  {"id": 3,  "name": "regulatory_lookup",     "query": "Is BIS certification mandatory for office work chairs?", "expect_mode": "AGENT", "expect_answer_contains_any": ["QCO", "mandatory", "UNKNOWN"]},
+  {"id": 4,  "name": "testing",               "query": "What tests are required for IS 17631?",         "expect_answer_contains": ["test"]},
+  {"id": 5,  "name": "lab",                   "query": "Which laboratories can perform these tests?",   "conversation_seed": "What tests are required for IS 17631?", "expect_answer_contains_any": ["lab", "Laborator", "UNKNOWN"]},
+  {"id": 6,  "name": "full_agent_workflow",   "query": "I manufacture wooden and metal office work chairs. Tell me the applicable standard, whether certification is mandatory, which scheme applies, what tests are required, which laboratories can perform them, and show me the supporting BIS evidence.", "expect_mode": "AGENT", "expect_tools_includes": ["get_tests", "find_labs"], "expect_answer_contains": ["17631"]},
+  {"id": 7,  "name": "memory_product",        "steps": [{"q": "I manufacture office work chairs.", "say_any": ["chair", "type", "standard"]}, {"q": "Which standard applies?", "expect_answer_contains": ["17631"]}]},
+  {"id": 8,  "name": "followup_memory",       "steps": [{"q": "What tests are required for IS 17631?", "expect_answer_contains": ["test"]}, {"q": "Which laboratories can do them?", "expect_answer_contains_any": ["lab", "Laborator", "UNKNOWN"]}]},
+  {"id": 9,  "name": "comparison",            "query": "Compare IS 17631 and IS 2347.",                 "expect_mode": "AGENT", "expect_tools_includes": ["compare_standards"], "expect_answer_contains_any": ["17631", "2347"]},
+  {"id": 10, "name": "unknown",              "query": "What is the tolerance limit for unobtainium alloy content in IS 99999?", "expect_status": "UNKNOWN", "expect_answer_contains": ["couldn't determine"]},
+  {"id": 11, "name": "conflict",             "query": "What is the publication date of IS 17631?",      "expect_status_any": ["COMPLETED", "UNKNOWN", "REQUIRES_REVIEW"]},
+  {"id": 12, "name": "invalid_verification",  "query": "Verify CML licence number 999999999 for office chairs.", "expect_mode": "AGENT", "expect_answer_contains_any": ["NOT_FOUND", "NOT_VERIFIED", "UNKNOWN", "couldn't determine"]}
+]

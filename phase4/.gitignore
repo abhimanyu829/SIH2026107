@@ -1,0 +1,5 @@
+.env
+.embeddings_cache/
+.hf_cache/
+__pycache__/
+*.pyc

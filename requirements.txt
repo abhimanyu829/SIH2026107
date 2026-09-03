@@ -1,0 +1,45 @@
+# BIS SIH26107 — Backend Requirements & Run Instructions
+
+# ------------------------------------------------------------
+# HOW TO RUN THE BACKEND:
+# 1. Install dependencies:
+#    pip install -r requirements.txt
+#
+# 2. Start Phase 5 FastAPI Server:
+#    cd phase5
+#    uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+#
+# 3. Verify Health Endpoint:
+#    http://localhost:8000/api/health
+# ------------------------------------------------------------
+
+# Core Utilities & Data Processing
+numpy>=1.26
+requests>=2.31.0
+chardet>=5.2.0
+Pillow>=10.0.0
+
+# Database & Vector Store
+psycopg2-binary>=2.9
+qdrant-client>=1.12
+
+# AI Models & Embeddings
+torch>=2.2
+transformers>=4.44
+
+# API & Web Framework
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.6
+
+# LangChain & Agent Framework
+langgraph>=1.2
+langchain-core>=1.6
+langchain-openai>=1.6
+
+# Document Parsing & Excel Export (Phase 6)
+python-docx>=1.1
+pymupdf>=1.24
+openpyxl>=3.1
+xlsxwriter>=3.2.0
+pytesseract>=0.3.10

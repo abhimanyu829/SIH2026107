@@ -1,0 +1,75 @@
+﻿country,manufacturer_count,licence_count,source_file_id,source_file,source_sheet,source_row,record_disposition
+Albania,2,2,F042,output__fmcs_country_coverage.csv,,2,CANONICAL
+Australia,1,1,F042,output__fmcs_country_coverage.csv,,3,CANONICAL
+Austria,20,23,F042,output__fmcs_country_coverage.csv,,4,CANONICAL
+Bahrain,7,11,F042,output__fmcs_country_coverage.csv,,5,CANONICAL
+Bangladesh,77,112,F042,output__fmcs_country_coverage.csv,,6,CANONICAL
+Belgium,15,18,F042,output__fmcs_country_coverage.csv,,7,CANONICAL
+Bhutan,28,41,F042,output__fmcs_country_coverage.csv,,8,CANONICAL
+Brazil,14,15,F042,output__fmcs_country_coverage.csv,,9,CANONICAL
+Bulgaria,3,3,F042,output__fmcs_country_coverage.csv,,10,CANONICAL
+Cambodia,22,26,F042,output__fmcs_country_coverage.csv,,11,CANONICAL
+Canada,2,2,F042,output__fmcs_country_coverage.csv,,12,CANONICAL
+China,204,258,F042,output__fmcs_country_coverage.csv,,13,CANONICAL
+Colombia,1,1,F042,output__fmcs_country_coverage.csv,,14,CANONICAL
+Croatia,1,1,F042,output__fmcs_country_coverage.csv,,15,CANONICAL
+Czech Republic,18,21,F042,output__fmcs_country_coverage.csv,,16,CANONICAL
+Denmark,4,6,F042,output__fmcs_country_coverage.csv,,17,CANONICAL
+Egypt,3,3,F042,output__fmcs_country_coverage.csv,,18,CANONICAL
+Finland,5,5,F042,output__fmcs_country_coverage.csv,,19,CANONICAL
+France,38,47,F042,output__fmcs_country_coverage.csv,,20,CANONICAL
+Germany,84,112,F042,output__fmcs_country_coverage.csv,,21,CANONICAL
+Greece,1,1,F042,output__fmcs_country_coverage.csv,,22,CANONICAL
+Hungary,10,11,F042,output__fmcs_country_coverage.csv,,23,CANONICAL
+Iceland,1,1,F042,output__fmcs_country_coverage.csv,,24,CANONICAL
+Indonesia,123,169,F042,output__fmcs_country_coverage.csv,,25,CANONICAL
+Iran,22,25,F042,output__fmcs_country_coverage.csv,,26,CANONICAL
+Italy,114,151,F042,output__fmcs_country_coverage.csv,,27,CANONICAL
+Japan,107,215,F042,output__fmcs_country_coverage.csv,,28,CANONICAL
+Jordan,1,1,F042,output__fmcs_country_coverage.csv,,29,CANONICAL
+Kazakhstan,3,3,F042,output__fmcs_country_coverage.csv,,30,CANONICAL
+Kuwait,6,6,F042,output__fmcs_country_coverage.csv,,31,CANONICAL
+Laos,5,7,F042,output__fmcs_country_coverage.csv,,32,CANONICAL
+Luxembourg,3,3,F042,output__fmcs_country_coverage.csv,,33,CANONICAL
+Malaysia,97,117,F042,output__fmcs_country_coverage.csv,,34,CANONICAL
+Mexico,14,16,F042,output__fmcs_country_coverage.csv,,35,CANONICAL
+Monaco,1,1,F042,output__fmcs_country_coverage.csv,,36,CANONICAL
+Morocco,1,1,F042,output__fmcs_country_coverage.csv,,37,CANONICAL
+Mozambique,1,1,F042,output__fmcs_country_coverage.csv,,38,CANONICAL
+Myanmar,10,12,F042,output__fmcs_country_coverage.csv,,39,CANONICAL
+Nepal,178,259,F042,output__fmcs_country_coverage.csv,,40,CANONICAL
+Netherlands,8,8,F042,output__fmcs_country_coverage.csv,,41,CANONICAL
+New Caledonia,1,1,F042,output__fmcs_country_coverage.csv,,42,CANONICAL
+New Zealand,2,2,F042,output__fmcs_country_coverage.csv,,43,CANONICAL
+Norway,2,2,F042,output__fmcs_country_coverage.csv,,44,CANONICAL
+Oman,11,13,F042,output__fmcs_country_coverage.csv,,45,CANONICAL
+Pakistan,5,5,F042,output__fmcs_country_coverage.csv,,46,CANONICAL
+Philippines,7,7,F042,output__fmcs_country_coverage.csv,,47,CANONICAL
+Poland,19,22,F042,output__fmcs_country_coverage.csv,,48,CANONICAL
+Portugal,4,6,F042,output__fmcs_country_coverage.csv,,49,CANONICAL
+Qatar,11,12,F042,output__fmcs_country_coverage.csv,,50,CANONICAL
+Romania,9,10,F042,output__fmcs_country_coverage.csv,,51,CANONICAL
+Russia,38,62,F042,output__fmcs_country_coverage.csv,,52,CANONICAL
+Saudi Arabia,33,43,F042,output__fmcs_country_coverage.csv,,53,CANONICAL
+Serbia and Montenegro,1,1,F042,output__fmcs_country_coverage.csv,,54,CANONICAL
+Singapore,16,22,F042,output__fmcs_country_coverage.csv,,55,CANONICAL
+Slovakia,3,3,F042,output__fmcs_country_coverage.csv,,56,CANONICAL
+Slovenia,5,5,F042,output__fmcs_country_coverage.csv,,57,CANONICAL
+South Africa,4,6,F042,output__fmcs_country_coverage.csv,,58,CANONICAL
+South Korea,198,319,F042,output__fmcs_country_coverage.csv,,59,CANONICAL
+Spain,22,25,F042,output__fmcs_country_coverage.csv,,60,CANONICAL
+Sri Lanka,10,14,F042,output__fmcs_country_coverage.csv,,61,CANONICAL
+Sweden,16,17,F042,output__fmcs_country_coverage.csv,,62,CANONICAL
+Switzerland,10,13,F042,output__fmcs_country_coverage.csv,,63,CANONICAL
+Taiwan,92,120,F042,output__fmcs_country_coverage.csv,,64,CANONICAL
+Taiwan (R.O.C),1,1,F042,output__fmcs_country_coverage.csv,,65,CANONICAL
+Thailand,167,202,F042,output__fmcs_country_coverage.csv,,66,CANONICAL
+Togo,1,1,F042,output__fmcs_country_coverage.csv,,67,CANONICAL
+Turkey,37,45,F042,output__fmcs_country_coverage.csv,,68,CANONICAL
+United Arab Emirates,52,69,F042,output__fmcs_country_coverage.csv,,69,CANONICAL
+United Kingdom,5,5,F042,output__fmcs_country_coverage.csv,,70,CANONICAL
+United States,41,46,F042,output__fmcs_country_coverage.csv,,71,CANONICAL
+Uzbekistan,1,1,F042,output__fmcs_country_coverage.csv,,72,CANONICAL
+Vietnam,234,315,F042,output__fmcs_country_coverage.csv,,73,CANONICAL
+West Africa,2,2,F042,output__fmcs_country_coverage.csv,,74,CANONICAL
+Zambia,1,2,F042,output__fmcs_country_coverage.csv,,75,CANONICAL

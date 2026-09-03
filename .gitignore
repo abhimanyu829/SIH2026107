@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Environment secrets — NEVER push
+.env
+*.env
+
+# Model cache (large)
+phase4/.hf_cache/
+.hf_cache/
+*.bin
+*.safetensors
+*.ot
+
+# Qdrant / embedding outputs & Large Data files (>100MB)
+BIS_SIH26107_DATA/QDRANT_READY/*.jsonl
+BIS_SIH26107_DATA/91_PROVENANCE/RECORD_PROVENANCE.csv
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+
+# Logs & temp
+*.log
+*.tmp
+scratch/
+
+# Supabase validation output (runtime artifacts)
+phase4/validation/PHASE4_VALIDATION.json
+phase5/evaluation/LIVE_VALIDATION_REPORT.json
+phase5/evaluation/evaluation_report.json

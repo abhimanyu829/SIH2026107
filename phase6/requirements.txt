@@ -1,0 +1,7 @@
+# Phase 6 - document processing + same base as Phase 5.
+python-docx>=1.1
+pymupdf>=1.24
+openpyxl>=3.1
+# Everything else (fastapi, langgraph, langchain-core, qdrant-client,
+# psycopg2-binary, transformers, torch) comes from phase5/requirements.txt.
+# pytesseract is optional: install + Tesseract binary for the OCR fallback.

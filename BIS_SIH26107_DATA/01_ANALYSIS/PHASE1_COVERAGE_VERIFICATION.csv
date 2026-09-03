@@ -1,0 +1,21 @@
+﻿check_id,check,status,expected,observed,detail
+C01,Every source file on disk appears in FILE_INVENTORY,PASS,49 files,49 rows,missing=none extra=none
+C02,file_id is unique and non-empty,PASS,49 unique,49 unique,
+C03,All source files byte-identical to their recorded SHA-256 (immutability),PASS,0 changed,0 changed,no drift
+C04,Source file sizes unchanged,PASS,0 changed,0 changed,no drift
+C05,Every inventoried file has a terminal analysis_status,PASS,"no blanks, 0 errors","{""ANALYZED"": 45, ""ANALYZED_WITH_IN_MEMORY_REPAIR"": 3, ""NON_TABULAR_NOT_PROFILED"": 1}",
+C06,Every analysed file has >=1 worksheet row in WORKBOOK_SHEET_ANALYSIS,PASS,48 files,48 covered,all covered
+C07,sheet_count matches the number of worksheet rows emitted,PASS,exact match,0 mismatches,all match
+C08,No worksheet row references an unknown file_id,PASS,0 orphans,0 orphans,none
+C09,Exactly one classification row per worksheet,PASS,48 sheets,48 classifications,unclassified=none dup=0
+C10,COLUMN_PROFILING has one row per column of every worksheet,PASS,685 columns,685 rows,all match
+C11,"Data-row counts reconcile across inventory, sheets and summary",PASS,57215 rows,57215 rows,all match
+C12,non_null_rows + null_rows == total_rows for every column,PASS,0 violations,0 violations,arithmetic closes
+C13,unique_count + duplicate_count == informative values for every column,PASS,0 violations,0 violations,arithmetic closes
+C14,All specification-mandated columns present in the four deliverables,PASS,0 missing,0 files short,{}
+C15,Every deliverable has a header and at least one data row,PASS,4 populated,0 empty,all populated
+C16,Every domain label is from the sanctioned 22-domain taxonomy,PASS,0 illegal,0 illegal,vocabulary clean
+C17,Every classification records its evidence,PASS,0 unexplained,0 unexplained,all evidenced
+C18,Every in-memory structural repair states its repair rule,PASS,3 repairs documented,0 undocumented,bis_gazette_notification.csv:RAGGED_ROWS_WIDER_THAN_HEADER;bis_topic17_hallmarking_centres.csv:SINGLE_LINE_ESCAPED_CSV;bis_topic17_hallmarking_centres_cancelled_suspended.csv:SINGLE_LINE_ESCAPED_CSV
+C19,Placeholder nulls counted separately from true nulls,PASS,placeholder accounting present,275916 placeholder cells across 72 columns,
+C20,Every file carries a duplicate-candidate group and a stated basis,PASS,0 blanks,0 blanks,all assigned

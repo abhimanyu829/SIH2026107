@@ -1,0 +1,12 @@
+# Phase 5 - FastAPI + LangChain + LangGraph chatbot/agent.
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.6
+langgraph>=1.2
+langchain-core>=1.6
+langchain-openai>=1.6          # optional at runtime; deterministic mode works without
+psycopg2-binary>=2.9           # via phase4
+qdrant-client>=1.12            # via phase4
+transformers>=4.44             # via phase4 (BGE-M3 embedder)
+torch>=2.2
+numpy>=1.26

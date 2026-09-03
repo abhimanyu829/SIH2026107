@@ -1,0 +1,65 @@
+PHASE 2 - DUPLICATE / OVERLAP / VERSION / CONFLICT ANALYSIS
+Generated 2026-09-02 04:13 UTC - evidence and plan only, no data altered.
+
+
+==============================================================================
+PHASE 2 COMPLETE — DUPLICATE/OVERLAP/VERSION ANALYSIS COMPLETE
+==============================================================================
+Total duplicate/overlap groups analysed : 232
+   COMPLEMENTARY                 189
+   CONFLICTING                     0
+   DIFFERENT_ENTITY               28
+   DUPLICATE_WITH_UNIQUE_DATA      4
+   EXACT_DUPLICATE                 1
+   IDENTICAL_CONTENT               1
+   LIKELY_DUPLICATE                1
+   REQUIRES_REVIEW                 5
+   VERSION_NEWER                   3
+   VERSION_OLDER                   0
+Exact duplicates (identical bytes)      : 1
+Identical-content duplicates            : 1
+Complementary datasets                  : 189
+Version pairs (direction from content)  : 3
+Different-entity false candidates       : 28
+Conflicts recorded (unresolved)         : 3305 across 63 pairs
+Homonym columns (split, do not union)   : 19  application_procedure; current_status; description; eligibility; exclusions; factory_requirements …(+13)
+Groups needing multi-file record merge  : 195
+Records that must be preserved from     : 485 (upper bound on records held by
+  more than one file                      only one file in an overlapping pair)
+Canonical-file decisions                : 49 files
+   KEEP_AND_MERGE_CONTRIBUTES_UNIQUE_RECORDS   14
+   KEEP_AS_CANONICAL_UNIQUE                  4
+   KEEP_DISTINCT_ENTITY                     21
+   KEEP_PENDING_REVIEW                       5
+   NOT_TABULAR_KEEP_AS_REFERENCE             1
+   REDUNDANT_ARCHIVE_AFTER_VALIDATION        4
+Files redundant (archive AFTER Phase 6) : 4  BIS_Products_Full_Information.xlsx; BIS_Scheme_X_Industrial_v2.xlsx; BIS_Standards_Details_v2 (1).xlsx; BIS_Standards_Details_v2.xlsx
+Files that must be kept and merged      : 45 of 49
+Unresolved - evidence did not settle    : 5 groups
+Flagged for human approval at merge     : 200 groups (resolved, but the merge rule needs sign-off)
+Merge steps planned                     : 14
+
+Source files modified: 0    Files archived: 0    Folders restructured: 0
+Canonical datasets created: 0  (Phase 2 produces evidence and a plan only)
+
+==============================================================================
+PHASE 2 VERIFICATION
+==============================================================================
+[PASS] source files unmodified (SHA-256 re-hash)                                49 files re-hashed (48 workspace + 1 attached); modified=none missing=none
+[PASS] source root unchanged (no file added or removed)                         48 files; extra=none absent=none
+[PASS] all 8 mandatory Phase 2 outputs present and non-empty                    missing/empty=none
+[PASS] DUPLICATE_GROUPS.csv carries every required column                       missing=none
+[PASS] every decision is one of the 10 allowed categories                       illegal=none; distinct used=8
+[PASS] one duplicate-group row per compared pair                                pairs compared=232 groups=232 dup_pair_ids=0
+[PASS] every conflict is UNRESOLVED_PRESERVE_BOTH                               3305 conflicts; resolved-early=0
+[PASS] every conflict carries both sides with source rows                       missing provenance=0 both-sides-blank=0
+[PASS] no archive-eligible file holds uncovered unique records                  4 archive-eligible; offenders=none
+[PASS] every archive-eligible file is covered by a RETAINED file                coverage chains resolve to a kept file; orphans=none
+[PASS] no version pair loses a record if the older side is archived             15 version rows analysed; lossy=0
+[PASS] every version verdict rests on ENRICHMENT/REPAIR content evidence        offenders=none
+[PASS] BIS_Schemes_Master vs _Scheme_2 checked by content                       decision=DIFFERENT_ENTITY discriminators=scheme_code; scheme_id; scheme_name
+[PASS] every retained tabular file is claimed by a merge step                   44 retained tabular; unclaimed=none
+[PASS] Phase 2 boundary intact (no archive, no restructure, no canonical data)  non-empty premature dirs=none
+[PASS] conflicting pairs carry a review flag unless direction was proven        offenders=none
+------------------------------------------------------------------------------
+16 checks, 16 PASS, 0 FAIL
