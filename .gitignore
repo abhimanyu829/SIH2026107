@@ -43,3 +43,11 @@ scratch/
 phase4/validation/PHASE4_VALIDATION.json
 phase5/evaluation/LIVE_VALIDATION_REPORT.json
 phase5/evaluation/evaluation_report.json
+
+# Node / Frontend
+node_modules/
+**/node_modules/
+dist/
+.next/
+build/
+

@@ -1,0 +1,73 @@
+/* Global base styles + background visual language (subtle). */
+@import './tokens.css';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; }
+
+a { color: var(--accent-cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-navy-dark); }
+code, .mono { font-family: var(--font-mono); }
+
+:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; border-radius: 2px; }
+
+::selection { background: var(--accent-cyan-soft); }
+
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+
+/* App background: barely-visible technical atmosphere */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 340px at 12% -4%, var(--bg-accent-blue), transparent 70%),
+    radial-gradient(560px 320px at 92% 6%, var(--bg-accent-cyan), transparent 70%),
+    radial-gradient(480px 300px at 50% 110%, var(--bg-accent-teal), transparent 70%),
+    var(--bg-base-primary);
+}
+.app-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (max-width: 1024px) {
+  .app-bg {
+    background:
+      radial-gradient(420px 260px at 15% -4%, var(--bg-accent-blue), transparent 70%),
+      var(--bg-base-primary);
+  }
+  .app-bg::before { background-size: 56px 56px; opacity: 0.6; }
+}
+@media (max-width: 640px) {
+  .app-bg::before { display: none; }
+  .app-bg { background: var(--bg-base-primary); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,101 @@
+/* Design tokens — BIS Intelligent Assistant.
+   Government-grade light design system. All components use these variables. */
+:root {
+  /* Brand — BIS navy identity */
+  --primary-navy: #0B3B60;
+  --primary-navy-dark: #07263E;
+  --primary-navy-deep: #041726;
+  --primary-navy-light: #124A75;
+  --primary-navy-subtle: #EDF4FA;
+
+  /* AI accent — restrained cyan */
+  --accent-cyan: #0284C7;
+  --accent-cyan-light: #0EA5E9;
+  --accent-cyan-soft: #E0F2FE;
+  --accent-cyan-border: #BAE6FD;
+
+  /* Surfaces */
+  --bg-app: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --bg-subtle: #F8FAFC;
+
+  /* Background system (subtle atmospheric layers) */
+  --bg-base-primary: #F7FAFC;
+  --bg-base-white: #FFFFFF;
+  --bg-base-tint1: #F4F8FA;
+  --bg-base-tint2: #EEF5F7;
+  --bg-base-tint3: #E8F3F5;
+  --bg-accent-blue: rgba(50, 130, 220, 0.045);
+  --bg-accent-cyan: rgba(50, 190, 200, 0.05);
+  --bg-accent-teal: rgba(30, 180, 175, 0.045);
+  --bg-grid-line: rgba(30, 80, 100, 0.032);
+  --bg-frame-border: rgba(30, 80, 100, 0.038);
+  --bg-node-line: rgba(30, 100, 160, 0.055);
+  --bg-particle-dot: rgba(30, 100, 160, 0.12);
+
+  /* Borders */
+  --border-default: #E2E8F0;
+  --border-muted: #CBD5E1;
+  --border-focus: #0B3B60;
+
+  /* Text */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --text-white: #FFFFFF;
+
+  /* Compliance status */
+  --status-pass: #15803D;
+  --status-pass-bg: #DCFCE7;
+  --status-pass-border: #86EFAC;
+  --status-gap: #B45309;
+  --status-gap-bg: #FEF3C7;
+  --status-gap-border: #FCD34D;
+  --status-unknown: #475569;
+  --status-unknown-bg: #F1F5F9;
+  --status-unknown-border: #CBD5E1;
+  --status-error: #B91C1C;
+  --status-error-bg: #FEE2E2;
+  --status-error-border: #FCA5A5;
+
+  /* Official / AI distinction */
+  --official-bg: #EFF6FF;
+  --official-text: #0B3B60;
+  --official-border: #BFDBFE;
+  --aiagent-bg: #F0F9FF;
+  --aiagent-text: #0369A1;
+  --aiagent-border: #BAE6FD;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-drawer: -4px 0 24px rgba(15, 23, 42, 0.12);
+
+  /* Layout */
+  --header-h: 68px;
+  --sidebar-w: 248px;
+  --content-max: 1200px;
+
+  /* Tricolor + hero gradient */
+  --tricolor: linear-gradient(90deg, #FF9933 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%);
+  --hero-gradient: linear-gradient(135deg, #07263E 0%, #0B3B60 55%, #0284C7 100%);
+  --footer-grad: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 25%, #EFF6FB 65%, #E3EFF7 100%);
+  --footer-accent: linear-gradient(90deg, #0B3B60 0%, #0284C7 35%, #0EA5E9 65%, #15803D 100%);
+}
