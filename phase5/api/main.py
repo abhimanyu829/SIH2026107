@@ -21,9 +21,12 @@ app = FastAPI(
                 "PostgreSQL + Qdrant Cloud. No frontend here.",
     version="1.0.0")
 
+_cors_raw = cfg.get("CORS_ORIGINS", "").strip()
+_cors_origins = [o.strip().rstrip("/") for o in _cors_raw.split(",") if o.strip()] if _cors_raw else ["*"]
+
 app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_methods=["*"],
-    allow_headers=["*"])   # local prototype; frontend connects later
+    CORSMiddleware, allow_origins=_cors_origins, allow_methods=["*"],
+    allow_headers=["*"])   # defaults to * locally; set CORS_ORIGINS in prod
 
 app.include_router(routes_chat.router, prefix="/api")
 app.include_router(routes_agent.router, prefix="/api")

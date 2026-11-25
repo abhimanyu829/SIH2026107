@@ -1,7 +1,8 @@
 /* Centralized API client. The ONLY network layer — every call goes through
-   the FastAPI backend via the dev proxy. No DB/LLM direct access, no secrets. */
+   the FastAPI backend (VITE_API_BASE_URL in prod, or /api dev proxy locally). */
 
-export const API_BASE = '/api'
+const _envBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '')
+export const API_BASE = _envBase ? (_envBase.endsWith('/api') ? _envBase : `${_envBase}/api`) : '/api'
 
 export class ApiError extends Error {
   status: number
