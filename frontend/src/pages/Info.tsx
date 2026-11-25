@@ -78,7 +78,7 @@ export const About: React.FC = () => {
   const { t } = useLang()
   return (
     <div className="fade-in">
-      <PageHeader crumb="PREFERENCES" title={t('about')} sub="SIH26107 — AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers." />
+      <PageHeader crumb="PREFERENCES" title={t('about')} sub="AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers." />
       <SectionCard title="What this is">
         <p className="small" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
           The BIS Intelligent Assistant is an evidence-grounded AI service built around authoritative BIS publications —

@@ -130,16 +130,15 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
   const [drawer, setDrawer] = useState<DrawerData | null>(null)
   const [prevScore, setPrevScore] = useState<number | null>(null)
 
-  const stepIdx = (status: string, hasResult: boolean): number => {
-    if (hasResult) return 5
-    switch (status) {
-      case 'created': return 0
-      case 'product_resolved': return 1
-      case 'documents_pending': return 2
-      case 'documents_processed': return 3
-      case 'analyzed': return 4
-      default: return 1
-    }
+  const stepIdx = (status: string, hasResult: boolean, hasIs: boolean, hasDocs: boolean, docsProcessed: boolean): number => {
+    const s = (status || '').toUpperCase()
+    if (hasResult || s === 'ANALYZED') return 5
+    if (s === 'PROCESSING') return 3
+    if (docsProcessed) return 4
+    if (hasDocs) return 3
+    if (hasIs) return 2
+    if (s === 'CREATED') return 1
+    return 1
   }
 
   const load = async () => {
@@ -180,8 +179,7 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
     setAnalyzing(true)
     try {
       await complianceApi.analyze(auditId)
-      const r = await complianceApi.result(auditId)
-      setResult(r)
+      await load()
       push('success', 'Analysis complete')
     } catch (e: any) { push('error', e.message) } finally { setAnalyzing(false) }
   }
@@ -191,8 +189,7 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
     setRechecking(true); setReport(null); setReportOpen(false)
     try {
       await complianceApi.recheck(auditId)
-      const r = await complianceApi.result(auditId)
-      setResult(r)
+      await load()
       push('success', 'Recheck complete')
     } catch (e: any) { push('error', e.message) } finally { setRechecking(false) }
   }
@@ -213,9 +210,16 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
   if (loadError) return <ErrorState message={loadError} onRetry={load} />
   if (!audit) return <ErrorState />
 
-  const cur = stepIdx(result?.status || audit.status, !!result?.results?.length && (result?.score !== undefined))
+  const isNumber = audit.is_number || audit.bis_context?.is_number
+  const firstStd = audit.bis_context?.standard || audit.bis_context?.standards?.[0]
   const hasDocs = (audit.documents || []).length > 0
-  const analyzed = !!result?.score || result?.status === 'analyzed' || audit.status === 'analyzed'
+  const docsProcessed = hasDocs && (audit.documents || []).every((d: any) => ['EXTRACTED', 'CLASSIFIED', 'PROCESSED'].includes((d.status || '').toUpperCase()))
+  const analyzed = Boolean(
+    (result?.score && result.score.total !== undefined) ||
+    (result?.status || '').toUpperCase() === 'ANALYZED' ||
+    (audit.status || '').toUpperCase() === 'ANALYZED'
+  )
+  const cur = stepIdx(result?.status || audit.status, analyzed && !!result?.results?.length, !!isNumber, hasDocs, docsProcessed)
   const score = result?.score
   const results: any[] = result?.results || []
   const remediation: any[] = result?.remediation || []
@@ -250,19 +254,19 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
         {/* resolved product / standard */}
         <SectionCard title={t('stepConfirm')} accent="official"
-          badge={audit.is_number ? <StatusBadge kind="official" label={`IS ${audit.is_number}`} /> : <StatusBadge kind="unknown" label="UNRESOLVED" />}>
+          badge={isNumber ? <StatusBadge kind="official" label={`IS ${isNumber}`} /> : <StatusBadge kind="unknown" label="UNRESOLVED" />}>
           {audit.status === 'created' && <LoadingState label={t('resolveNote')} />}
-          {audit.product && (
+          {(audit.product || isNumber || firstStd) && (
             <KeyValueList items={[
-              ['Product', audit.product?.product_name],
+              ['Product', audit.product?.product_name || audit.product_text],
               ['Category', audit.product?.product_category],
-              ['Standard', audit.is_number && <span className="mono">IS {audit.is_number}</span>],
+              ['Standard', isNumber && <span className="mono">IS {isNumber}{firstStd?.title ? ` — ${firstStd.title}` : ''}</span>],
               ['QCO', audit.product?.qco_number || (audit.product?.qco_name ? `${audit.product.qco_name}` : '—')],
             ]} />
           )}
-          {audit.is_number && (
+          {isNumber && (
             <button className="btn btn-secondary btn-sm" style={{ marginTop: 12 }}
-              onClick={() => nav(`/standards/${String(audit.is_number).replace(/\D/g, '')}`)}>
+              onClick={() => nav(`/standards/${String(isNumber).replace(/\D/g, '')}`)}>
               <FileText size={13} /> {t('viewStandard')}
             </button>
           )}
@@ -284,7 +288,7 @@ const AuditWorkbench: React.FC<{ auditId: string }> = ({ auditId }) => {
                       {d.category || 'unclassified'}{d.pages ? ` · ${d.pages} pages` : ''}{d.evidence_count !== undefined ? ` · ${d.evidence_count} evidence` : ''}
                     </div>
                   </div>
-                  <StatusBadge kind={d.status === 'processed' ? 'pass' : 'unknown'} label={(d.status || '').toUpperCase() || 'UPLOADED'} />
+                  <StatusBadge kind={['EXTRACTED', 'CLASSIFIED', 'PROCESSED'].includes((d.status || '').toUpperCase()) ? 'pass' : 'unknown'} label={(d.status || '').toUpperCase() || 'UPLOADED'} />
                   <button className="btn btn-ghost btn-sm" onClick={() => removeDoc(d.document_id)} aria-label="Remove">
                     <Trash2 size={13} />
                   </button>

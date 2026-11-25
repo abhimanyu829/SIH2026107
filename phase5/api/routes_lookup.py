@@ -24,15 +24,21 @@ def standard(is_number: str, year: str = ""):
 @router.get("/products/{product_id}")
 def product(product_id: str):
     """Product by id, with its linked standards."""
-    r = call("find_product", query=product_id)
-    if not r["ok"] or not r["data"]:
-        raise HTTPException(status_code=404, detail="product not found")
-    row = next((p for p in r["data"] if p.get("product_id") == product_id),
-               None)
-    if row is None:
-        raise HTTPException(status_code=404, detail="product id not matched")
     from tools._shared import supabase
-    stds = supabase().standards_for_product(product_id)
+    sb = supabase()
+    with sb.impl.conn.cursor() as cur:
+        cur.execute(
+            "SELECT product_id, product_name, product_category, "
+            "alternate_names, keywords, certification_scheme_to_store "
+            "FROM bis.product_master WHERE product_id = %s",
+            (product_id,),
+        )
+        cols = [d[0] for d in (cur.description or ())]
+        r = cur.fetchone()
+    if r is None:
+        raise HTTPException(status_code=404, detail="product not found")
+    row = dict(zip(cols, r))
+    stds = sb.standards_for_product(product_id)
     return {"data": {"product": row, "standards": stds},
             "provenance": "Supabase bis.product_master + is_product_mapping"}
 

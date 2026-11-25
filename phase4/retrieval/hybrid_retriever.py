@@ -97,6 +97,7 @@ def _print_result(r):
     if not r["supabase"]["bundles"]:
         print("  (no structured match for this query)")
     for b in r["supabase"]["bundles"]:
+        std = b["standard"]
         print("  IS number : %s (%s)" % (std.get("canonical_is_number"),
                                         std.get("display_is_number")))
         print("  title     : %s" % (std.get("title") or ""))

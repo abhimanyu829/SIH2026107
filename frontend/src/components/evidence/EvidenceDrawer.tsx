@@ -68,7 +68,7 @@ export const EvidenceDrawer: React.FC<{ open: boolean; data: DrawerData | null; 
                 <div className="small" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                   <FileText size={13} style={{ color: 'var(--text-muted)' }} />
                   <strong>{d.document}</strong>
-                  {d.page !== undefined && d.page !== '' && <span className="muted">· {labels.page ?? 'Page'} {d.page}</span>}
+                  {d.page !== null && d.page !== undefined && d.page !== '' && <span className="muted">· {labels.page ?? 'Page'} {d.page}</span>}
                 </div>
               )}
               {d.extractedText && (

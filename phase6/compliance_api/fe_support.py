@@ -38,12 +38,19 @@ def products_search(q: str = Query(..., min_length=2), limit: int = 12):
 # ---- product by id (same shape as /api/products/{id}) ----------------------
 @router.get("/products/{product_id}")
 def product_detail(product_id: str):
-    from tools import call
-    r = call("find_product", query=product_id)
-    row = next((p for p in (r["data"] or [])
-                if p.get("product_id") == product_id), None)
-    if row is None:
+    pg = _supabase().impl
+    with pg.conn.cursor() as cur:
+        cur.execute(
+            "SELECT product_id, product_name, product_category, "
+            "alternate_names, keywords, certification_scheme_to_store "
+            "FROM bis.product_master WHERE product_id = %s",
+            (product_id,),
+        )
+        cols = [d[0] for d in (cur.description or ())]
+        r = cur.fetchone()
+    if r is None:
         raise HTTPException(status_code=404, detail="product not found")
+    row = dict(zip(cols, r))
     stds = _supabase().standards_for_product(product_id)
     return {"data": {"product": row, "standards": stds},
             "provenance": "Supabase bis.product_master + is_product_mapping"}
@@ -75,7 +82,7 @@ def labs_browse(state: str = "", city: str = "", q: str = "",
         sql += " ORDER BY lab_name LIMIT %s"
         args.append(min(max(1, limit), 200))
         cur.execute(sql, args)
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         rows = [dict(zip(cols, r)) for r in cur.fetchall()]
         cur.execute("SELECT DISTINCT state FROM bis.lab_master "
                     "WHERE state IS NOT NULL AND state <> '' ORDER BY state")
@@ -95,7 +102,7 @@ def lab_detail(lab_id: str):
                     "contact_number, email, recognition_status, validity, "
                     "validity_date, scope_url, source_url FROM bis.lab_master "
                     "WHERE lab_id = %s", (lab_id,))
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         row = cur.fetchone()
         if row is None:
             raise HTTPException(status_code=404, detail="lab not found")
@@ -138,7 +145,7 @@ def hallmarking_centres(state: str = "", city: str = "", q: str = "",
         sql += " ORDER BY centre_name LIMIT %s"
         args.append(min(max(1, limit), 200))
         cur.execute(sql, args)
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         rows = [dict(zip(cols, r)) for r in cur.fetchall()]
         cur.execute("SELECT DISTINCT state FROM bis.hallmarking_master "
                     "WHERE state IS NOT NULL AND state <> '' ORDER BY state")
@@ -166,7 +173,7 @@ def qcos_browse(q: str = "", limit: int = 60):
         sql += " ORDER BY qco_name LIMIT %s"
         args.append(min(max(1, limit), 200))
         cur.execute(sql, args)
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         rows = [dict(zip(cols, r)) for r in cur.fetchall()]
     return {"data": rows,
             "provenance": "Supabase bis.qco_master"}
@@ -179,7 +186,7 @@ def schemes_browse():
     with pg.conn.cursor() as cur:
         cur.execute("SELECT scheme_id, scheme_code, scheme_name, description "
                     "FROM bis.scheme_master ORDER BY scheme_code")
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         rows = [dict(zip(cols, r)) for r in cur.fetchall()]
     return {"data": rows,
             "provenance": "Supabase bis.scheme_master"}
@@ -200,7 +207,7 @@ def manuals_browse(q: str = "", limit: int = 60):
         sql += " ORDER BY manual_title LIMIT %s"
         args.append(min(max(1, limit), 200))
         cur.execute(sql, args)
-        cols = [d[0] for d in cur.description]
+        cols = [d[0] for d in (cur.description or ())]
         rows = [dict(zip(cols, r)) for r in cur.fetchall()]
     return {"data": rows,
             "provenance": "Supabase bis.product_manual_master"}

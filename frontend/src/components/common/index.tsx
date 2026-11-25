@@ -70,24 +70,40 @@ export const PageHeader: React.FC<{ crumb?: string; title: string; sub?: string;
 )
 
 /* ---------- SourceCard ---------- */
+const cleanMeta = (v?: string | number | null): string => {
+  if (v === null || v === undefined) return ''
+  const s = String(v).trim()
+  return /^null$/i.test(s) ? '' : s
+}
+
 export const SourceCard: React.FC<{
   title: string; isNumber?: string; clause?: string; page?: string | number
   documentType?: string; url?: string; onOpen?: () => void
-}> = ({ title, isNumber, clause, page, documentType, url, onOpen }) => (
-  <div className="bis-card hoverable" style={{ padding: '12px 16px', cursor: onOpen ? 'pointer' : 'default' }} onClick={onOpen}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-      <StatusBadge kind="official" label="OFFICIAL BIS SOURCE" />
-      {documentType && <span className="muted" style={{ fontSize: '0.75rem' }}>{documentType}</span>}
+}> = ({ title, isNumber, clause, page, documentType, url, onOpen }) => {
+  const cleanTitle = cleanMeta(title) || 'BIS Document'
+  const cleanIs = cleanMeta(isNumber)
+  const cleanClause = cleanMeta(clause)
+  const cleanPage = cleanMeta(page)
+  const cleanType = cleanMeta(documentType)
+  const cleanUrl = cleanMeta(url)
+  return (
+    <div className="bis-card hoverable" style={{ padding: '12px 16px', cursor: onOpen ? 'pointer' : 'default' }} onClick={onOpen}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+        <StatusBadge kind="official" label="OFFICIAL BIS SOURCE" />
+        {cleanType && <span className="muted" style={{ fontSize: '0.75rem' }}>{cleanType}</span>}
+      </div>
+      <div style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)' }}>{cleanTitle}</div>
+      {(cleanIs || cleanClause || cleanPage) && (
+        <div className="small muted" style={{ display: 'flex', gap: 14, marginTop: 4, flexWrap: 'wrap' }}>
+          {cleanIs && <span className="mono">IS {cleanIs}</span>}
+          {cleanClause && <span>Clause {cleanClause}</span>}
+          {cleanPage && <span>Page {cleanPage}</span>}
+        </div>
+      )}
+      {cleanUrl && <a href={cleanUrl} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ fontSize: '0.75rem', marginTop: 6, display: 'inline-block' }}>Official document ↗</a>}
     </div>
-    <div style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--text-primary)' }}>{title}</div>
-    <div className="small muted" style={{ display: 'flex', gap: 14, marginTop: 4, flexWrap: 'wrap' }}>
-      {isNumber && <span className="mono">IS {isNumber}</span>}
-      {clause && <span>Clause {clause}</span>}
-      {page !== undefined && page !== '' && <span>Page {page}</span>}
-    </div>
-    {url && <a href={url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ fontSize: '0.75rem', marginTop: 6, display: 'inline-block' }}>Official document ↗</a>}
-  </div>
-)
+  )
+}
 
 /* ---------- FileDropzone ---------- */
 export const FileDropzone: React.FC<{

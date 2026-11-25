@@ -47,38 +47,36 @@ def run_analysis(audit_id, max_requirements=40, use_llm=True):
     ctx["status"] = "PROCESSING"
     store.save(ctx)
 
-    # 1. resolve product + BIS context (phase5 tools)
-    _log("resolve_product")
-    resolved = req_mod.resolve_product(ctx.get("product_text", ""))
-    if resolved.get("is_number"):
-        ctx["product"] = resolved.get("product")
-        ctx["bis_context"] = {"is_number": resolved["is_number"],
-                              "standards": resolved.get("standards", [])[:3],
-                              "products": resolved.get("products", [])[:3]}
-    elif not ctx.get("requirements"):
-        # no BIS resolution AND no requirement list (nothing synthetic either):
-        # honest UNKNOWN result, never a fabricated requirement
-        ctx["status"] = "ANALYZED"
-        ctx["results"] = []
-        ctx["score"] = scoring.score([])
-        ctx["error_note"] = ("Authoritative BIS evidence was not found in "
-                             "the current knowledge base for this product.")
-        store.save(ctx)
-        return {"ok": True, "audit_id": audit_id, "steps": _STEPS,
-                "note": ctx["error_note"],
-                "score": ctx["score"], "latency_sec": round(time.time() - t0, 1)}
-
-    # 2. requirements from real BIS rows (skipped when a synthetic/injected
-    #    requirement list already exists and no live resolution is available)
-    if resolved.get("is_number"):
-        _log("resolve_BIS_requirements")
-        reqs, std_row = req_mod.build_requirements(resolved["is_number"],
-                                                   max_requirements)
-        ctx["requirements"] = reqs
-        if std_row:
-            ctx["bis_context"]["standard"] = std_row
-        ctx["bis_sources"] = req_mod.requirement_sources(resolved["is_number"])
-        store.save(ctx)
+    # 1-2. resolve product + BIS context + requirements (skipped when a
+    #      requirement list already exists, e.g. recheck or injected test reqs)
+    if not ctx.get("requirements"):
+        _log("resolve_product")
+        resolved = req_mod.resolve_product(ctx.get("product_text", ""))
+        if resolved.get("is_number"):
+            ctx["product"] = resolved.get("product")
+            ctx["bis_context"] = {"is_number": resolved["is_number"],
+                                  "standards": resolved.get("standards", [])[:3],
+                                  "products": resolved.get("products", [])[:3]}
+            _log("resolve_BIS_requirements")
+            reqs, std_row = req_mod.build_requirements(resolved["is_number"],
+                                                       max_requirements)
+            ctx["requirements"] = reqs
+            if std_row:
+                ctx["bis_context"]["standard"] = std_row
+            ctx["bis_sources"] = req_mod.requirement_sources(resolved["is_number"])
+            store.save(ctx)
+        else:
+            # no BIS resolution AND no requirement list (nothing synthetic either):
+            # honest UNKNOWN result, never a fabricated requirement
+            ctx["status"] = "ANALYZED"
+            ctx["results"] = []
+            ctx["score"] = scoring.score([])
+            ctx["error_note"] = ("Authoritative BIS evidence was not found in "
+                                 "the current knowledge base for this product.")
+            store.save(ctx)
+            return {"ok": True, "audit_id": audit_id, "steps": _STEPS,
+                    "note": ctx["error_note"],
+                    "score": ctx["score"], "latency_sec": round(time.time() - t0, 1)}
     else:
         _log("resolve_BIS_requirements", "using existing requirement list")
         store.save(ctx)
@@ -168,4 +166,3 @@ def compliance_graph():
 def run_via_graph(audit_id):
     """Executes the LangGraph-wrapped analysis (same pipeline, graph-traced)."""
     return compliance_graph().invoke({"audit_id": audit_id})
-

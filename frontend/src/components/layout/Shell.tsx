@@ -43,7 +43,7 @@ export const Navbar: React.FC<{ onMenu: () => void }> = ({ onMenu }) => {
               {t('appName')}
             </span>
             <span className="muted" style={{ fontSize: '0.6875rem', letterSpacing: '0.02em' }}>
-              SIH26107 · {t('appTagline')}
+              {t('appTagline')}
             </span>
           </span>
         </Link>
@@ -255,7 +255,17 @@ export const MobileNav: React.FC = () => {
 export const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const loc = useLocation()
-  React.useEffect(() => { setMobileOpen(false) }, [loc.pathname])
+  React.useLayoutEffect(() => {
+    setMobileOpen(false)
+    const reset = () => {
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+      window.scrollTo(0, 0)
+    }
+    reset()
+    const id = requestAnimationFrame(reset)
+    return () => cancelAnimationFrame(id)
+  }, [loc.pathname])
   return (
     <div className="app-shell">
       <div className="app-bg" aria-hidden="true" />

@@ -12,7 +12,6 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import config  # noqa: E402
 from supabase.connect import connect  # noqa: E402
 
 # IS 17631 / IS 2347:2023 / IS 302-2-25 / is 9873-1 ...
@@ -81,6 +80,7 @@ class PostgresRetriever:
                 " LIMIT %s",
                 tuple("%%%s%%" % _q(t) for t in tokens) + (200,))
             candidates = _rows(cur)
+
         # score = number of tokens matched; keep rows matching ALL tokens, else top N
         def score(p):
             hay = " ".join([p.get("product_name") or "", p.get("alternate_names") or "",
@@ -107,15 +107,21 @@ class PostgresRetriever:
                        standard_status, mandatory_voluntary
                   FROM bis.is_master
                  WHERE """ + " OR ".join(
-                     ["(coalesce(title,'') || ' ' || coalesce(standard_scope,'') || ' ' "
+                     ["(coalesce(canonical_is_number,'') || ' ' || coalesce(display_is_number,'') "
+                      "|| ' ' || coalesce(title,'') || ' ' || coalesce(standard_scope,'') || ' ' "
                       "|| coalesce(product_category,'')) ILIKE %s"] * len(tokens)) +
                 " LIMIT 200",
                 tuple("%%%s%%" % _q(t) for t in tokens))
             candidates = _rows(cur)
+
         def score(s):
-            hay = " ".join([s.get("title") or "", s.get("standard_scope") or "",
+            is_str = " ".join([s.get("canonical_is_number") or "",
+                               s.get("display_is_number") or ""]).lower()
+            hay = " ".join([is_str, s.get("title") or "",
+                            s.get("standard_scope") or "",
                             s.get("product_category") or ""]).lower()
-            return sum(1 for t in tokens if t in hay)
+            return sum(1 for t in tokens if t in hay) + sum(
+                5 for t in tokens if t in is_str)
         return sorted(candidates, key=score, reverse=True)[:limit]
 
     def standards_for_product(self, product_id):
